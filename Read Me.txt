@@ -1,0 +1,18 @@
+@comment Hello, thanks for trying out my first Target.com automation script
+//To start using this software start with these instructions
+/**
+To start we need to create a secondary Google Chrome account.
+To do this open up Chrome application.
+>>In top right corner click on google account icon.
+>>click + add
+>>click Sign in with your google account info
+>>go to Target.com and log in to your preferred account
+>>Now on your computer
+>>Open file explorer
+>>navigate to Windows 7, 8.1, and 10: C:\Users\<username>\AppData\Local\Google\Chrome\User Data\
+>> copy this folder and paste it on your desktop
+>>open this project folder
+>>open userCVV.txt file and delete text
+>>enter your Target.com Credit Card three digit CVV code
+
+*/
