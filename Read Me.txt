@@ -5,6 +5,9 @@ Requirements:
 #chromedriver.exe (place in fold) check your chrome version in chrome browser settings.
 #selenium library installed (use pip install selenium) if you have Python installed.
 #Java Integrated Development Envirronment IDE (Eclipse) for example
+@comment A key feature I included to this software is the ability to use a sub-user chrome profile
+With this sub-user account you can keep all your website information saved for future use, just need to log into your desired website accounts and allow the browser to save these cookies.
+@comment another key feature is the use of chromedriver options hiding the browsers automation detection, something websites like Target.com have a large issue with.
 >>To start we need to create a secondary Google Chrome account.
 >>To do this open up Chrome application.
 >>In top right corner click on google account icon.
