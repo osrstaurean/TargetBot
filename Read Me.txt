@@ -1,8 +1,12 @@
 @comment Hello, thanks for trying out my first Target.com automation script
 //To start using this software start with these instructions
 /**
-To start we need to create a secondary Google Chrome account.
-To do this open up Chrome application.
+Requirements:
+#chromedriver.exe (place in fold) check your chrome version in chrome browser settings.
+#selenium library installed (use pip install selenium) if you have Python installed.
+#Java Integrated Development Envirronment IDE (Eclipse) for example
+>>To start we need to create a secondary Google Chrome account.
+>>To do this open up Chrome application.
 >>In top right corner click on google account icon.
 >>click + add
 >>click Sign in with your google account info
