@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -44,25 +45,57 @@ public class Main {
         // Set to this directory and choose a new non default profiles**/
         options.addArguments("--user-data-dir=C:\\Users\\logfi\\OneDrive\\Desktop\\User Data\\","--profile-directory=Profile 1");
         options.addArguments("no-sandbox");
-        
+        String message = "print";
         WebDriver driver = new ChromeDriver(options);
         
         // uses what is entered in userCVV text file, Will be used for saved Target CC
         //change file settings to your path
-        File userFile1 = new File("C:\\Users\\<username>\\eclipse-workspace\\seleniumProject\\userCVV.txt");
-        File userFileURL = new File("C:\\Users\\<username>\\eclipse-workspace\\seleniumProject\\userURL.txt");
+        File userFile1 = new File("C:\\Users\\logfi\\eclipse-workspace\\seleniumProject\\userCVV.txt");
+        File userFileURL = new File("C:\\Users\\logfi\\eclipse-workspace\\seleniumProject\\userURL.txt");
         Scanner myReader = new Scanner(userFile1);
         Scanner urlReader = new Scanner(userFileURL);
-        
+
         String data = myReader.nextLine();    
         String fileURL = urlReader.nextLine();
         driver.get(fileURL);
           try {  
-            	
-        	WebElement firstResult = new WebDriverWait(driver, Duration.ofSeconds(15))
+        	  boolean displayed = false;
+              int timesTried = 0;
+              Thread.sleep(10000);
+              do {
+                  Thread.sleep(100);
+                  driver.navigate().refresh();
+                  System.out.println("Refreshing page");
+                  timesTried++;
+                  //Thread.sleep(400);
+                  System.out.println("Times tried looking for element: " + timesTried);
+              }
+        	  while (ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(@id, 'addToCartButton')]"))==null);{
+                  System.out.println("Add to cart attempted ");
+                  Thread.sleep(1000);
+                  System.out.println("Times tried looking for element: " + timesTried);
+                  WebElement waitForShipIt = new WebDriverWait(driver, Duration.ofSeconds(15))
+                          .until(elementToBeClickable(By.xpath("//button[contains(@id, 'addT')]")));
+                  driver.findElement(By.xpath("//button[contains(@id, 'addT')]")).click();
+                  System.out.println("Product added");
+                  //driver.wait(40);
+        	  }        	          	
+  	
+        	WebElement firstResult = new WebDriverWait(driver, Duration.ofSeconds(4))
                         .until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@id, 'addT')]")));                               
             driver.findElement(By.xpath("//button[contains(@id, 'addT')]")).click();
             System.out.println("Add to cart complete.");            	
+
+            //ADD IF WHILE STATEMENT BELOW
+            /**
+            WebElement alreadyInCart = new WebDriverWait(driver, Duration.ofSeconds(4))
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@data-test='custom-quantity-picker')]")));                               
+            Boolean isPresent = driver.findElements(By.xpath("//*[contains(@id='select')]")).size() > 0;
+            System.out.println(isPresent);  
+            driver.findElement(By.xpath("//span[contains(@data-icon-name='CommerceCartLine')]")).click();
+           */
+
+            //System.out.println(isPresent);
             WebElement viewCart = new WebDriverWait(driver, Duration.ofSeconds(15))
                    .until(ExpectedConditions.elementToBeClickable(By.linkText("View cart & check out")));                               
             driver.findElement(By.linkText("View cart & check out")).click();
